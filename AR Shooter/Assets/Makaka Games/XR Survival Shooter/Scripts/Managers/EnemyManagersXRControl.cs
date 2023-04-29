@@ -9,13 +9,15 @@ public class EnemyManagersXRControl : MonoBehaviour
 	public EnemyManagerXR[] enemyManagersXR;
 	private EnemyManagerXR enemyManagerXRTemp;
 	public UnityEvent OnInitialized;
-
+	public int WaveCount;
 	private int initedPools = 0;
 	private int enemyManagersXRActiveCount = 0;
+	int enemyCount, remainingWave;
 
 	private void Start()
 	{
 		buttonStart.onClick.AddListener(Spawn);
+		remainingWave--;
 
 		for (int i = 0; i < enemyManagersXR.Length; i++)
 		{
@@ -24,13 +26,28 @@ public class EnemyManagersXRControl : MonoBehaviour
 			if (enemyManagerXRTemp)
 			{	
 				enemyManagerXRTemp.OnInitialized.AddListener(CountInitedEnemyManagerXR);
+				enemyManagerXRTemp.OnSpawn.AddListener(EnemySpawned);
+				enemyManagerXRTemp.OnDeath.AddListener(EnemyDead);
 				enemyManagerXRTemp.enabled = true;
 
 				enemyManagersXRActiveCount++;
 			}
 		}
 	}
-	
+	public void EnemySpawned()
+	{
+		enemyCount++;
+	}
+	public void EnemyDead()
+	{
+		enemyCount--;
+
+		if (enemyCount <= 0 && remainingWave > 0)
+		{
+			Spawn();
+			remainingWave--;
+		}
+	}
 	public void CountInitedEnemyManagerXR()
 	{
 		initedPools++;

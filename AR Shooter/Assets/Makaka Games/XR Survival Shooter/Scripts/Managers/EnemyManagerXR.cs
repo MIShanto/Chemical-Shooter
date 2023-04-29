@@ -6,13 +6,17 @@ public class EnemyManagerXR : MonoBehaviour
 {
     public RandomObjectPooler randomObjectPooler;
 	public UnityEvent OnInitialized;
+	public UnityEvent OnDeath, OnSpawn;
 
     [Header("Spawn")]    
     public PlayerHealthXR playerHealth;
     public float spawnTime = 3f;           
+    public float waveTime = 10f;
+    float startTime;
+    float timeElapsed;
+    float timeRemaining;
     public Transform[] spawnPoints; 
     private int spawnPointIndex;
-
     private GameObject gameObjectTemp; 
     private EnemyHealthXR enemyHealthXRTemp; 
     private System.Type enemyHealthXRType;   
@@ -78,9 +82,15 @@ public class EnemyManagerXR : MonoBehaviour
 
     IEnumerator SpawnCoroutine (float repeatRate)
     {
-        while (playerHealth.currentHealth > 0f)
+        startTime = Time.time;
+        timeRemaining = waveTime;
+
+        while (timeRemaining > 0)
         {
-            yield return new WaitForSeconds(spawnTime);
+            timeElapsed = Time.time - startTime;
+            timeRemaining = waveTime - timeElapsed;
+
+            yield return new WaitForSeconds(repeatRate);
 
             gameObjectTemp = randomObjectPooler.GetPooledObject();
 

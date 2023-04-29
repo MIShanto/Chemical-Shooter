@@ -4,6 +4,8 @@ using System.Collections;
 
 public class EnemyHealthXR : MonoBehaviour
 {
+    public GameObject dropItem;
+
     public int startingHealth = 100;            // The amount of health the enemy starts the game with.
     public int currentHealth;                   // The current health the enemy has.
     public float sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
@@ -119,6 +121,8 @@ public class EnemyHealthXR : MonoBehaviour
         // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
+
+        Instantiate(dropItem, transform.position, Quaternion.identity);
     }
 
     // Call by Death Animation Event
