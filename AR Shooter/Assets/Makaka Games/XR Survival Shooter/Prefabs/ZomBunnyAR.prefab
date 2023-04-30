@@ -338,6 +338,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2abb2ee26a42199267c799442b95b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chemicalType: 1
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  dropItem: {fileID: 861142542938241318, guid: 82ab66ea6e6254045ae191a8e09feac3, type: 3}
   startingHealth: 100
   currentHealth: 0
   sinkSpeed: 2.5

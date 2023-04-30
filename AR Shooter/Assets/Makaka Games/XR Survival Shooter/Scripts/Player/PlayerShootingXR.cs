@@ -2,6 +2,9 @@
 
 public class PlayerShootingXR : MonoBehaviour
 {
+
+    public GameManager.ChemicalType chemicalType;
+
     public int damagePerShot = 20;                  // The damage inflicted by each bullet.
     public float timeBetweenBullets = 0.15f;        // The time between each shot.
     public float range = 100f;                      // The distance the gun can fire.
@@ -12,7 +15,7 @@ public class PlayerShootingXR : MonoBehaviour
     RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
     int shootableMask;                              // A layer mask so the raycast only hits things on the shootable layer.
     ParticleSystem gunParticles;                    // Reference to the particle system.
-    LineRenderer gunLine;                           // Reference to the line renderer.
+    public LineRenderer gunLine;                           // Reference to the line renderer.
     AudioSource gunAudio;                           // Reference to the audio source.
     Light gunLight;                                 // Reference to the light component.
     public Light faceLight;								// Duh
@@ -114,10 +117,11 @@ public class PlayerShootingXR : MonoBehaviour
         {
             // Try and find an EnemyHealth script on the gameobject hit.
             EnemyHealthXR enemyHealth = shootHit.collider.GetComponent <EnemyHealthXR> ();
-
             // If the EnemyHealth component exist...
-            if(enemyHealth != null)
+            if(enemyHealth != null && chemicalType != enemyHealth.chemicalType)
             {
+                Debug.Log(3);
+
                 // ... the enemy should take damage.
                 enemyHealth.TakeDamage (damagePerShot, shootHit.point);
             }

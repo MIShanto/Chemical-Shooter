@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using UnityEngine.Events;
 
 public class EnemyHealthXR : MonoBehaviour
 {
+    public GameManager.ChemicalType chemicalType;
+    public UnityEvent OnDeath, OnSpawn;
+
     public GameObject dropItem;
 
     public int startingHealth = 100;            // The amount of health the enemy starts the game with.
@@ -54,6 +58,9 @@ public class EnemyHealthXR : MonoBehaviour
     void Init()
     {
         currentHealth = startingHealth;
+
+        OnSpawn.Invoke();
+
     }
 
     void Update ()
@@ -104,6 +111,8 @@ public class EnemyHealthXR : MonoBehaviour
         {
             // ... the enemy is dead.
             Death ();
+
+            OnDeath.Invoke();
         }
     }
 

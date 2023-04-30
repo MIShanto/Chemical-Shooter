@@ -6,8 +6,7 @@ public class EnemyManagerXR : MonoBehaviour
 {
     public RandomObjectPooler randomObjectPooler;
 	public UnityEvent OnInitialized;
-	public UnityEvent OnDeath, OnSpawn;
-
+    public UnityEvent OnDeath, OnSpawn;
     [Header("Spawn")]    
     public PlayerHealthXR playerHealth;
     public float spawnTime = 3f;           
@@ -18,7 +17,7 @@ public class EnemyManagerXR : MonoBehaviour
     public Transform[] spawnPoints; 
     private int spawnPointIndex;
     private GameObject gameObjectTemp; 
-    private EnemyHealthXR enemyHealthXRTemp; 
+    public EnemyHealthXR enemyHealthXRTemp; 
     private System.Type enemyHealthXRType;   
 
     private void Awake()
@@ -54,6 +53,8 @@ public class EnemyManagerXR : MonoBehaviour
 
                     enemyHealthXRTemp = randomObjectPooler.RegisterControlScript(gameObjectTemp) as EnemyHealthXR;
                     enemyHealthXRTemp.SetRenderersEnabled(false);
+                    enemyHealthXRTemp.OnSpawn = OnSpawn;
+                    enemyHealthXRTemp.OnDeath = OnDeath;
                     
             		yield return new WaitForFixedUpdate ();
 

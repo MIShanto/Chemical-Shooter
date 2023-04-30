@@ -6,17 +6,20 @@ using System.Collections.Generic;
 public class EnemyManagersXRControl : MonoBehaviour 
 {
 	public Button buttonStart;
+	public GameObject bossSpawnPoint;
+	public GameObject bossPrefab;
 	public EnemyManagerXR[] enemyManagersXR;
 	private EnemyManagerXR enemyManagerXRTemp;
 	public UnityEvent OnInitialized;
 	public int WaveCount;
 	private int initedPools = 0;
 	private int enemyManagersXRActiveCount = 0;
-	int enemyCount, remainingWave;
+	public int enemyCount, remainingWave;
 
 	private void Start()
 	{
 		buttonStart.onClick.AddListener(Spawn);
+		remainingWave = WaveCount;
 		remainingWave--;
 
 		for (int i = 0; i < enemyManagersXR.Length; i++)
@@ -42,10 +45,17 @@ public class EnemyManagersXRControl : MonoBehaviour
 	{
 		enemyCount--;
 
-		if (enemyCount <= 0 && remainingWave > 0)
+		if (enemyCount <= 0)
 		{
-			Spawn();
-			remainingWave--;
+			if (remainingWave > 0)
+			{
+				Spawn();
+				remainingWave--;
+			}
+			else
+			{
+				SpawnBoss();
+			}
 		}
 	}
 	public void CountInitedEnemyManagerXR()
@@ -62,8 +72,12 @@ public class EnemyManagersXRControl : MonoBehaviour
 
 			//Debug.Log("All Pools Inited");
 		}
-	}
 
+	}
+	void SpawnBoss()
+	{
+		Instantiate(bossPrefab, bossSpawnPoint.transform.position, Quaternion.identity);
+	}
 	public void Spawn()
 	{
 		for (int i = 0; i < enemyManagersXR.Length; i++)
