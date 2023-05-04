@@ -42,6 +42,8 @@ public class WeaponSelector : MonoBehaviour
         // Enable the new current weapon
         //weapons[currentWeaponIndex].weapon.SetActive(true);
         gameManager.playerShootingXR.chemicalType =  weapons[currentWeaponIndex].chemicalType;
+        var ps = gameManager.playerShootingXR.gunParticles.main;
+        ps.startColor = weapons[currentWeaponIndex].bulletColor;
         gameManager.playerShootingXR.gunLine.material.SetColor("_Color", weapons[currentWeaponIndex].bulletColor);
         gameManager.hudManager.weaponUIPanel.sprite = weapons[currentWeaponIndex].weaponImage;
     }

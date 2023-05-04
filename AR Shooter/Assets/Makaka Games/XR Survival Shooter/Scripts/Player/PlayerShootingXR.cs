@@ -14,7 +14,7 @@ public class PlayerShootingXR : MonoBehaviour
     Ray shootRay = new Ray();                       // A ray from the gun end forwards.
     RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
     int shootableMask;                              // A layer mask so the raycast only hits things on the shootable layer.
-    ParticleSystem gunParticles;                    // Reference to the particle system.
+    public ParticleSystem gunParticles;                    // Reference to the particle system.
     public LineRenderer gunLine;                           // Reference to the line renderer.
     AudioSource gunAudio;                           // Reference to the audio source.
     Light gunLight;                                 // Reference to the light component.
