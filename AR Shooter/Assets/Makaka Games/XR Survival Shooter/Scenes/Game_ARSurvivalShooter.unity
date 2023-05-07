@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6624808, g: 0.6951478, b: 0.7388308, a: 1}
+  m_IndirectSpecularColor: {r: 0.40725052, g: 0.45769918, b: 0.5349651, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -3616,9 +3616,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 730115141}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: LoadSceneWithScreenOrientationPortrait
-        m_Mode: 5
+        m_TargetAssemblyTypeName: MenuSceneControl, Assembly-CSharp
+        m_MethodName: ReloadCurrentScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

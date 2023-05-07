@@ -120,8 +120,6 @@ public class PlayerShootingXR : MonoBehaviour
             // If the EnemyHealth component exist...
             if(enemyHealth != null && chemicalType != enemyHealth.chemicalType)
             {
-                Debug.Log(3);
-
                 // ... the enemy should take damage.
                 enemyHealth.TakeDamage (damagePerShot, shootHit.point);
             }

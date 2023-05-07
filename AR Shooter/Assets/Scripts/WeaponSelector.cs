@@ -15,7 +15,7 @@ public class WeaponSelector : MonoBehaviour
 {
     public List<Weapon> weapons;
 
-    private int currentWeaponIndex = 0;
+    private int currentWeaponIndex = -1;
     GameManager gameManager;
     private void Start()
     {
@@ -23,6 +23,7 @@ public class WeaponSelector : MonoBehaviour
         //weapons[currentWeaponIndex].weapon.SetActive(true);
 
         gameManager = GameManager.instance;
+        UpdateWeapon();
     }
 
     public void UpdateWeapon()
