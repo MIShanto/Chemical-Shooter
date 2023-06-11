@@ -4,12 +4,33 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public enum ChemicalType
+    public enum GunType
     {
-        Base,
-        Acid
+        Hydrogen,
+        Ammonia,
+        SulfuricAcid,
+        NitricAcid,
+        HydrochloricAcid,
+        PotassiumHydroxide,
+        PotassiumPermanganate
+
     };
-    public ChemicalType chemicalType;
+    public GunType gunType;
+    public enum EnemyType
+    {
+        Nitrogen,
+        Magnessium,
+        HCL,
+        ZincMetal,
+        copperIIPhosphateSalt,
+        Ammonia,
+        ammoniumNitrate,
+        CarbonDioxide,
+        potassiumCarbonate,
+        SulfuricAcid,
+        potassiumSulfate
+    };
+    public GunType enemyType;
     public static GameManager instance;
 
     public HUDManager hudManager;
@@ -20,5 +41,9 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+    }
+    public void UpdateJoystickStatus(bool visible)
+    {
+        hudManager.joystick.gameObject.SetActive(visible);
     }
 }

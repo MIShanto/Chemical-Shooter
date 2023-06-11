@@ -8,24 +8,17 @@ public class Weapon
     public GameObject weapon;
     public Color bulletColor;
     public Sprite weaponImage;
-    public GameManager.ChemicalType chemicalType;
+    public GameManager.GunType gunType;
 }
 
 public class WeaponSelector : MonoBehaviour
 {
-    public List<Weapon> weapons;
-
-    private int currentWeaponIndex = -1;
     GameManager gameManager;
     private void Start()
     {
-        // Set the first weapon as active
-        //weapons[currentWeaponIndex].weapon.SetActive(true);
-
         gameManager = GameManager.instance;
-        UpdateWeapon();
     }
-
+/*
     public void UpdateWeapon()
     {
         // Disable the current weapon
@@ -42,10 +35,15 @@ public class WeaponSelector : MonoBehaviour
 
         // Enable the new current weapon
         //weapons[currentWeaponIndex].weapon.SetActive(true);
-        gameManager.playerShootingXR.chemicalType =  weapons[currentWeaponIndex].chemicalType;
+        gameManager.playerShootingXR.gunType =  weapons[currentWeaponIndex].gunType;
         var ps = gameManager.playerShootingXR.gunParticles.main;
         ps.startColor = weapons[currentWeaponIndex].bulletColor;
         gameManager.playerShootingXR.gunLine.material.SetColor("_Color", weapons[currentWeaponIndex].bulletColor);
         gameManager.hudManager.weaponUIPanel.sprite = weapons[currentWeaponIndex].weaponImage;
+    }*/
+
+    public void SelectGun(int gunType)
+    {
+        gameManager.playerShootingXR.gunType = (GameManager.GunType)gunType;
     }
 }

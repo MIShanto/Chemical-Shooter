@@ -3,7 +3,7 @@
 public class PlayerShootingXR : MonoBehaviour
 {
 
-    public GameManager.ChemicalType chemicalType;
+    public GameManager.GunType gunType;
 
     public int damagePerShot = 20;                  // The damage inflicted by each bullet.
     public float timeBetweenBullets = 0.15f;        // The time between each shot.
@@ -118,7 +118,7 @@ public class PlayerShootingXR : MonoBehaviour
             // Try and find an EnemyHealth script on the gameobject hit.
             EnemyHealthXR enemyHealth = shootHit.collider.GetComponent <EnemyHealthXR> ();
             // If the EnemyHealth component exist...
-            if(enemyHealth != null && chemicalType != enemyHealth.chemicalType)
+            if(enemyHealth != null && gunType == enemyHealth.gunType)
             {
                 // ... the enemy should take damage.
                 enemyHealth.TakeDamage (damagePerShot, shootHit.point);

@@ -9,7 +9,7 @@ public class PlayerHealthXR : MonoBehaviour
     public int startingHealth = 3;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
     
-    public Image[] heartImages;
+    
 
     public Image damageImage;                                   // Reference to an image to flash on the screen on being hurt.
     public AudioClip deathClip;                                 // The audio clip to play when the player dies.
@@ -41,8 +41,6 @@ public class PlayerHealthXR : MonoBehaviour
 
         // Set the initial health of the player.
         currentHealth = startingHealth;
-
-        UpdateUI();
 
         defaultColour = damageImage.color;
     }
@@ -90,17 +88,7 @@ public class PlayerHealthXR : MonoBehaviour
     }
     private void UpdateUI()
     {
-        for (int i = 0; i < heartImages.Length; i++)
-        {
-            if (i < currentHealth)
-            {
-                heartImages[i].enabled = true;
-            }
-            else
-            {
-                heartImages[i].enabled = false;
-            }
-        }
+        GameManager.instance.hudManager.UpdateHealthUI(startingHealth, currentHealth);
     }
 
     void Death ()

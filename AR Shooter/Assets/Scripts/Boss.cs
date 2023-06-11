@@ -6,7 +6,8 @@ using UnityEngine;
 public class Shield
 {
     public Color color; 
-    public GameManager.ChemicalType chemicalType; 
+    public GameManager.EnemyType enemyType; 
+    public GameManager.GunType gunType; 
 }
 public class Boss : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         InvokeRepeating(nameof(UpdateSheild), 0, 3f);
+        GetComponent<EnemyHealthXR>().OnDeath.AddListener(() => GameManager.instance.UpdateJoystickStatus(true));
     }
 
     void UpdateSheild()
@@ -26,7 +28,8 @@ public class Boss : MonoBehaviour
             int index = Random.Range(0, shields.Count);
 
             shieldMat.color = shields[index].color;
-            enemyHealthXR.chemicalType = shields[index].chemicalType;
+            enemyHealthXR.enemyType = shields[index].enemyType;
+            enemyHealthXR.gunType = shields[index].gunType;
         }
     }
 }

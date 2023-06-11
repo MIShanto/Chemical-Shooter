@@ -10180,7 +10180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2abb2ee26a42199267c799442b95b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chemicalType: 1
+  enemyType: 2
+  gunType: 1
   OnDeath:
     m_PersistentCalls:
       m_Calls: []

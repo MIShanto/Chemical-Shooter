@@ -5,7 +5,9 @@ using UnityEngine.Events;
 
 public class EnemyHealthXR : MonoBehaviour
 {
-    public GameManager.ChemicalType chemicalType;
+    public GameManager.EnemyType enemyType;
+    public GameManager.GunType gunType;
+
     public UnityEvent OnDeath, OnSpawn;
 
     public GameObject dropItem;

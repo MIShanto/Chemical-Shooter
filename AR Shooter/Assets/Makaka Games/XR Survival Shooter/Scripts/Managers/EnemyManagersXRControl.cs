@@ -49,8 +49,8 @@ public class EnemyManagersXRControl : MonoBehaviour
 		{
 			if (remainingWave > 0)
 			{
-				Spawn();
 				remainingWave--;
+				Spawn();
 			}
 			else
 			{
@@ -80,14 +80,11 @@ public class EnemyManagersXRControl : MonoBehaviour
 	}
 	public void Spawn()
 	{
-		for (int i = 0; i < enemyManagersXR.Length; i++)
-		{
-			enemyManagerXRTemp = enemyManagersXR[i];
+		enemyManagerXRTemp = enemyManagersXR[WaveCount - remainingWave - 1];
 
-			if (enemyManagerXRTemp)
-			{	
-				enemyManagerXRTemp.Spawn();
-			}
+		if (enemyManagerXRTemp)
+		{
+			enemyManagerXRTemp.Spawn();
 		}
 	}
 }

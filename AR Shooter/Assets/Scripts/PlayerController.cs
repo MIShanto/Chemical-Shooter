@@ -4,10 +4,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 3f; // The speed at which the camera moves
-    public Joystick joystick;
+    Joystick joystick;
     GameObject camera;
     private void Start()
     {
+        joystick = GameManager.instance.hudManager.joystick;
+        GameManager.instance.UpdateJoystickStatus(false);
         camera = Camera.main.gameObject;
     }
     void Update()
