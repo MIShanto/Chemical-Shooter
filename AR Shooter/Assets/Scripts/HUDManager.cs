@@ -6,6 +6,7 @@ public class HUDManager : MonoBehaviour
     public Sprite damagedHeart;
     public Image[] heartImages;
     public Joystick joystick;
+    public Image selectedGunPanel;
     public void UpdateHealthUI(int maxHealth, int index)
     {
         heartImages[maxHealth -1 - index].sprite = damagedHeart;

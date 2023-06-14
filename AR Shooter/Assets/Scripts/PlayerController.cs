@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         joystick = GameManager.instance.hudManager.joystick;
-        GameManager.instance.UpdateJoystickStatus(false);
+        //GameManager.instance.UpdateJoystickStatus(false);
         camera = Camera.main.gameObject;
     }
     void Update()

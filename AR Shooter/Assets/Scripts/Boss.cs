@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         InvokeRepeating(nameof(UpdateSheild), 0, 3f);
-        GetComponent<EnemyHealthXR>().OnDeath.AddListener(() => GameManager.instance.UpdateJoystickStatus(true));
+        //GetComponent<EnemyHealthXR>().OnDeath.AddListener(() => GameManager.instance.UpdateJoystickStatus(true));
     }
 
     void UpdateSheild()

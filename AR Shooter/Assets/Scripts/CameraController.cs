@@ -8,13 +8,8 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        if (Input.touchCount > 0)
         {
-            // Check if finger is over a UI element
-            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-            {
-                return;
-            }
             // Get movement of the finger since last frame
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
 
@@ -25,6 +20,7 @@ public class CameraController : MonoBehaviour
 
             // Apply the rotation to the camera
             transform.eulerAngles = new Vector3(_rotation.x, _rotation.y, 0f);
+
         }
     }
 }
