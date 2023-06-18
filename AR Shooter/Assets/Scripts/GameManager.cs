@@ -12,10 +12,10 @@ public class GameManager : MonoBehaviour
         NitricAcid,
         HydrochloricAcid,
         PotassiumHydroxide,
-        PotassiumPermanganate
+        PotassiumPermanganate,
+        None
 
     };
-    public GunType gunType;
     public enum EnemyType
     {
         Nitrogen,
@@ -30,17 +30,27 @@ public class GameManager : MonoBehaviour
         SulfuricAcid,
         potassiumSulfate
     };
-    public GunType enemyType;
+    public enum CollectableType
+    {
+        Ammonia,
+        Hydrogen,
+        AmmoniumChloride,
+
+    };
     public static GameManager instance;
 
     public HUDManager hudManager;
     public PlayerShootingXR playerShootingXR;
+    public GameOverManagerXR gameOverManagerXR;
+    public int collectables = 0;
     private void Awake()
     {
         if (instance == null)
             instance = this;
         else
             Destroy(gameObject);
+
+        Time.timeScale = 1;
     }
     public void UpdateJoystickStatus(bool visible)
     {

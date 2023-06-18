@@ -19,29 +19,6 @@ public class WeaponSelector : MonoBehaviour
     {
         gameManager = GameManager.instance;
     }
-/*
-    public void UpdateWeapon()
-    {
-        // Disable the current weapon
-        //weapons[currentWeaponIndex].weapon.SetActive(false);
-
-        // Increment the current weapon index
-        currentWeaponIndex++;
-
-        // If the current index is greater than the number of weapons, set it back to 0
-        if (currentWeaponIndex >= weapons.Count)
-        {
-            currentWeaponIndex = 0;
-        }
-
-        // Enable the new current weapon
-        //weapons[currentWeaponIndex].weapon.SetActive(true);
-        gameManager.playerShootingXR.gunType =  weapons[currentWeaponIndex].gunType;
-        var ps = gameManager.playerShootingXR.gunParticles.main;
-        ps.startColor = weapons[currentWeaponIndex].bulletColor;
-        gameManager.playerShootingXR.gunLine.material.SetColor("_Color", weapons[currentWeaponIndex].bulletColor);
-        gameManager.hudManager.weaponUIPanel.sprite = weapons[currentWeaponIndex].weaponImage;
-    }*/
 
     public void SelectGun(int gunType)
     {
@@ -55,5 +32,9 @@ public class WeaponSelector : MonoBehaviour
 
         gameManager.playerShootingXR.gunType = (GameManager.GunType)gunType;
         
+    }
+    public void UpdateTimeScale(float time)
+    {
+        Time.timeScale = time;
     }
 }

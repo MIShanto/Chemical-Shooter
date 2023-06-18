@@ -34,6 +34,8 @@ public class PlayerShootingXR : MonoBehaviour
         gunAudio = GetComponent<AudioSource> ();
         gunLight = GetComponent<Light> ();
         //faceLight = GetComponentInChildren<Light> ();
+
+        gunType = GameManager.GunType.None;
     }
 
 
@@ -72,7 +74,8 @@ public class PlayerShootingXR : MonoBehaviour
     }
     public void OnShootPress()
     {
-        canShoot = true;
+        if(gunType != GameManager.GunType.None)
+            canShoot = true;
     }
     public void OnShootRelease()
     {

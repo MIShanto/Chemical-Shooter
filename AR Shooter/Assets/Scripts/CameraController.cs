@@ -10,16 +10,24 @@ public class CameraController : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            // Get movement of the finger since last frame
-            Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+            foreach (Touch touch in Input.touches)
+            {
+                int id = touch.fingerId;
+                if (!EventSystem.current.IsPointerOverGameObject(id))
+                {
+                    // Get movement of the finger since last frame
+                    Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
 
-            _rotation.y += touchDeltaPosition.x * lookSpeed;
-            _rotation.x += -touchDeltaPosition.y * lookSpeed;
-            _rotation.x = Mathf.Clamp(_rotation.x, -90f, 90f);
-            _rotation.y = Mathf.Clamp(_rotation.y, -60f, 60f);
+                    _rotation.y += touchDeltaPosition.x * lookSpeed;
+                    _rotation.x += -touchDeltaPosition.y * lookSpeed;
+                    _rotation.x = Mathf.Clamp(_rotation.x, -90f, 90f);
+                    _rotation.y = Mathf.Clamp(_rotation.y, -60f, 60f);
 
-            // Apply the rotation to the camera
-            transform.eulerAngles = new Vector3(_rotation.x, _rotation.y, 0f);
+                    // Apply the rotation to the camera
+                    transform.eulerAngles = new Vector3(_rotation.x, _rotation.y, 0f);
+                }
+            }
+            
 
         }
     }

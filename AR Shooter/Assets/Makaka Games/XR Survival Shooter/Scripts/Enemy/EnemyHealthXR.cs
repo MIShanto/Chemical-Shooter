@@ -120,6 +120,8 @@ public class EnemyHealthXR : MonoBehaviour
 
     void Death ()
     {
+        GameManager.instance.collectables--;
+
         // The enemy is dead.
         isDead = true;
 

@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Makaka Games/XR Survival Shooter/Scenes/Game_ARSurvivalShooter.unity
-    guid: 70e3cf371cfff46629368e259e6ae2a2
+    path: Assets/Scenes/Main game.unity
+    guid: 967d8c5d260fb6847aca6264e9ee2984
   m_configObjects: {}

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class EnemyManagersXRControl : MonoBehaviour 
 {
@@ -43,6 +44,8 @@ public class EnemyManagersXRControl : MonoBehaviour
 	}
 	public void EnemyDead()
 	{
+		GameManager.instance.collectables--;
+
 		enemyCount--;
 
 		if (enemyCount <= 0)
@@ -80,6 +83,10 @@ public class EnemyManagersXRControl : MonoBehaviour
 	}
 	public void Spawn()
 	{
+		//tween
+		GameManager.instance.hudManager.waveAlertPanel.transform.DOScale(Vector3.one, 0.7f).OnComplete(() =>
+			GameManager.instance.hudManager.waveAlertPanel.transform.DOScale(Vector3.zero, 0.7f).SetEase(Ease.InBounce).SetDelay(1f)).SetEase(Ease.OutBounce);
+
 		enemyManagerXRTemp = enemyManagersXR[WaveCount - remainingWave - 1];
 
 		if (enemyManagerXRTemp)

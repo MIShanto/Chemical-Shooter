@@ -100,7 +100,7 @@ public class LoadScreenControl : MonoBehaviour {
 		#if UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7 || UNITY_5_0 || UNITY_5_1 || UNITY_5_2
 		Application.LoadLevel(customLoadScene);
 		#else
-		SceneManager.LoadScene(customLoadScene);
+		SceneManager.LoadScene(name);
 		#endif
 
 		yield return null;

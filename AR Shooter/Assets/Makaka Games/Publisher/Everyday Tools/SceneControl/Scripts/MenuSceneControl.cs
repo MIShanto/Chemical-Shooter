@@ -25,4 +25,21 @@ public class MenuSceneControl : MonoBehaviour
 	{
 		LoadScreenControl.Instance.LoadScene(SceneManager.GetActiveScene().name);
 	}
+	public void OnGameOver(bool status)
+	{
+		GameManager.instance.hudManager.gameFinishPanels[0].transform.parent.gameObject.SetActive(true);
+
+		if (status == true)
+		{
+			GameManager.instance.hudManager.gameFinishPanels[1].SetActive(true);
+		}
+		else
+		{
+			GameManager.instance.hudManager.gameFinishPanels[0].SetActive(true);
+		}
+	}
+	public void Quit()
+	{
+		Application.Quit();
+	}
 }
