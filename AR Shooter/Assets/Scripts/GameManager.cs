@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     public HUDManager hudManager;
     public PlayerShootingXR playerShootingXR;
     public GameOverManagerXR gameOverManagerXR;
+    List<Sprite> collectedChemicals;
     public int collectables = 0;
     private void Awake()
     {
@@ -51,6 +53,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         Time.timeScale = 1;
+    }
+    public void SetCollectedChemicals(Sprite img)
+    {
+        if (collectedChemicals == null)
+            collectedChemicals = new List<Sprite>();
+
+        collectedChemicals.Add(img);
+    }
+    public List<Sprite> GetCollectedChemicals()
+    {
+        return collectedChemicals;
     }
     public void UpdateJoystickStatus(bool visible)
     {

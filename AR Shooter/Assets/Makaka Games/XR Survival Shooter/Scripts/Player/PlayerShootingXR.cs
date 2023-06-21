@@ -121,11 +121,23 @@ public class PlayerShootingXR : MonoBehaviour
             // Try and find an EnemyHealth script on the gameobject hit.
             EnemyHealthXR enemyHealth = shootHit.collider.GetComponent <EnemyHealthXR> ();
             // If the EnemyHealth component exist...
-            if(enemyHealth != null && gunType == enemyHealth.gunType)
+            if (enemyHealth != null)
             {
-                // ... the enemy should take damage.
-                enemyHealth.TakeDamage (damagePerShot, shootHit.point);
+                if (gunType == enemyHealth.gunType)
+                {
+                    // ... the enemy should take damage.
+                    enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                }
+                else
+                {
+                    var tmp = Random.Range(0, 10);
+                    print(tmp);
+                    if ( tmp >= 9)
+                        //tween
+                        GameManager.instance.hudManager.ShowAlert("Select proper gun");
+                }
             }
+            
 
             // Set the second position of the line renderer to the point the raycast hit.
             gunLine.SetPosition (1, shootHit.point);

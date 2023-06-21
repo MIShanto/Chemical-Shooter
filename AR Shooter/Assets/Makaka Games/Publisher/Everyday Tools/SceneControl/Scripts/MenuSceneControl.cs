@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
@@ -35,8 +36,29 @@ public class MenuSceneControl : MonoBehaviour
 		}
 		else
 		{
+			//pass panel
 			GameManager.instance.hudManager.gameFinishPanels[0].SetActive(true);
+
+			ShowCollectables();
 		}
+	}
+	void ShowCollectables()
+	{
+		var chemicalSprites = GameManager.instance.GetCollectedChemicals();
+
+        foreach (var item in chemicalSprites)
+        {
+			GameObject imgObject = new GameObject("collectable");
+
+			RectTransform trans = imgObject.AddComponent<RectTransform>();
+			trans.transform.SetParent(GameManager.instance.hudManager.collectablesListpanel.transform); // setting parent
+
+			Image image = imgObject.AddComponent<Image>();
+
+			image.sprite = item;
+
+		}
+		
 	}
 	public void Quit()
 	{

@@ -36,6 +36,7 @@ public class Collectable : MonoBehaviour
 
             gameManager.hudManager.collectablesUI.sprite = sprite;
             gameManager.hudManager.collectablesText.text = name;
+            gameManager.SetCollectedChemicals(sprite);
 
             //tween
             gameManager.hudManager.collectablesUIpanel.transform.DOScale(Vector3.one, 0.7f).OnComplete(() =>

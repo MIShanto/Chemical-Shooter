@@ -44,8 +44,6 @@ public class EnemyManagersXRControl : MonoBehaviour
 	}
 	public void EnemyDead()
 	{
-		GameManager.instance.collectables--;
-
 		enemyCount--;
 
 		if (enemyCount <= 0)
@@ -84,8 +82,7 @@ public class EnemyManagersXRControl : MonoBehaviour
 	public void Spawn()
 	{
 		//tween
-		GameManager.instance.hudManager.waveAlertPanel.transform.DOScale(Vector3.one, 0.7f).OnComplete(() =>
-			GameManager.instance.hudManager.waveAlertPanel.transform.DOScale(Vector3.zero, 0.7f).SetEase(Ease.InBounce).SetDelay(1f)).SetEase(Ease.OutBounce);
+		GameManager.instance.hudManager.ShowAlert("Wave incoming\nSelect proper gun");
 
 		enemyManagerXRTemp = enemyManagersXR[WaveCount - remainingWave - 1];
 
