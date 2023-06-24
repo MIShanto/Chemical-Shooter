@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 3f; // The speed at which the camera moves
     Joystick joystick;
-    GameObject camera;
 
     private void Start()
     {
@@ -17,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
         joystick = GameManager.instance.hudManager.joystick;
         //GameManager.instance.UpdateJoystickStatus(false);
-        camera = Camera.main.gameObject;
     }
     void Update()
     {
@@ -26,12 +24,13 @@ public class PlayerController : MonoBehaviour
         float vertical = joystick.Vertical;
 
         // Calculate movement vector
-        Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
+         Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
+        //Vector3 movement = transform.right * horizontal + transform.forward * vertical;
 
         // Normalize movement vector to prevent faster diagonal movement
         movement.Normalize();
 
         // Move player using the Translate method
-        camera.transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(movement * moveSpeed * Time.deltaTime);
     }
 }

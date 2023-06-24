@@ -56,6 +56,7 @@ public class MenuSceneControl : MonoBehaviour
 			Image image = imgObject.AddComponent<Image>();
 
 			image.sprite = item;
+			image.preserveAspect = true;
 
 		}
 		

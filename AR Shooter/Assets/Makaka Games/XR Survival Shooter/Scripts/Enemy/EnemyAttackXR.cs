@@ -22,7 +22,7 @@ public class EnemyAttackXR : MonoBehaviour
     {
         // Setting up the references.
         player = GameObject.FindGameObjectWithTag ("Player");
-        playerHealth = player.GetComponent <PlayerHealthXR> ();
+        playerHealth = player.GetComponent<PlayerHealthXR> ();
         playerDamageZone = playerHealth.playerDamageZone;
         
         enemyHealth = GetComponent<EnemyHealthXR>();

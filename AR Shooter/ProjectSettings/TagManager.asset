@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerDamageZone
+  - Collider
   layers:
   - Default
   - TransparentFX
