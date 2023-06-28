@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
         }
 
         joystick = GameManager.instance.hudManager.joystick;
-        //GameManager.instance.UpdateJoystickStatus(false);
+        GameManager.instance.UpdateJoystickStatus(false);
     }
     void Update()
     {

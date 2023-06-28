@@ -39,7 +39,7 @@ public class MenuSceneControl : MonoBehaviour
 			//pass panel
 			GameManager.instance.hudManager.gameFinishPanels[0].SetActive(true);
 
-			ShowCollectables();
+			//ShowCollectables();
 		}
 	}
 	void ShowCollectables()

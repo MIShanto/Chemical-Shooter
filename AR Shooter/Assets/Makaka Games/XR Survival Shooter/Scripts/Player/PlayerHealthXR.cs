@@ -24,7 +24,7 @@ public class PlayerHealthXR : MonoBehaviour
    
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
     //PlayerMovement playerMovement;                              // Reference to the player's movement.
-    PlayerShootingXR playerShooting;                              // Reference to the PlayerShooting script.
+   public PlayerShootingXR playerShooting;                              // Reference to the PlayerShooting script.
    
     bool isDead;                                                // Whether the player is dead.
     bool damaged;                                               // True when the player gets damaged.
@@ -36,8 +36,6 @@ public class PlayerHealthXR : MonoBehaviour
         // Setting up the references.
         anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();
-        //playerMovement = GetComponent <PlayerMovement> ();
-        playerShooting = GetComponentInChildren <PlayerShootingXR> ();
 
         // Set the initial health of the player.
         currentHealth = startingHealth;

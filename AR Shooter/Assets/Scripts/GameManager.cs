@@ -69,4 +69,12 @@ public class GameManager : MonoBehaviour
     {
         hudManager.joystick.gameObject.SetActive(visible);
     }
+    public void OnGameWin()
+    {
+        Invoke(nameof(InvokeGameWinEvent), 2f);
+    }
+    void InvokeGameWinEvent()
+    {
+        gameOverManagerXR.OnGameWin.Invoke();
+    }
 }

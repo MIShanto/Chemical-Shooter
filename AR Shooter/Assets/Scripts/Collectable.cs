@@ -45,8 +45,10 @@ public class Collectable : MonoBehaviour
         }
 
         if (gameManager.collectables == 0)
-            gameManager.gameOverManagerXR.OnGameWin.Invoke();
+            gameManager.OnGameWin();
 
         Destroy(gameObject);
     }
+
+    
 }
